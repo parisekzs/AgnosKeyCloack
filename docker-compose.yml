@@ -1,0 +1,16 @@
+keycloak:
+    image: quay.io/keycloak/keycloak:22.0.1
+    container_name: keycloak
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin2357
+      KC_HTTP_RELATIVE_PATH: "/auth"
+      KC_HTTP_ENABLED: "true"
+    ports:
+      - "8082:8080"
+    restart: always
+    command:
+      - start-dev
+    volumes:
+      - ./local/keycloak/:/opt/keycloak/data/
+      - ./themes/:/opt/keycloak/themes/
